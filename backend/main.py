@@ -4,15 +4,13 @@ from sqlalchemy.orm import Session
 import models
 from database import engine, get_db
 
-# Tạo bảng tự động trong PostgreSQL nếu chưa có
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Book Review API")
 
-# CẤU HÌNH CORS: Cho phép ReactJS ở Frontend gọi được API sang Backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Lúc dev có thể để "*" hoặc điền URL React của bạn vào
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
